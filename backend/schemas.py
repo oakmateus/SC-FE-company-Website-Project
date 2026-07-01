@@ -2,6 +2,20 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
 
+# Token
+
+class TokenData(BaseModel):
+    id: Optional[int] = None
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+    class Config:
+        orm_mode = True
+
+# Client Account Register Fields
+
 class ClientRegisterCredentials(BaseModel):
     client_username: str
     email: EmailStr
@@ -16,20 +30,9 @@ class ClientRegisterOut(BaseModel):
     class Config:
         orm_mode = True
 
-# Client Login Fields
+# Client Account Login Fields
 
 class ClientLoginCredentials(BaseModel):
     email: EmailStr
     password: str
-
-# Token
-
-class TokenData(BaseModel):
-    id: Optional[int] = None
-
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
-    class Config:
-        orm_mode = True
+    

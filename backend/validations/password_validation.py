@@ -1,7 +1,7 @@
 from passlib.context import CryptContext
 from fastapi import status, HTTPException
 import re
-from . import schemas
+from .. import schemas
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
