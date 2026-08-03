@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, ForeignKey, Integer, Float
+from sqlalchemy import Column, String, ForeignKey, Integer, Float, UUID, Boolean
 from sqlalchemy.sql import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
@@ -28,3 +28,21 @@ class CompleteServicePack(Base):
     inicial_budget = Column(Float, nullable=True)
     client_owner_id = Column(Integer, ForeignKey('client.client_id', ondelete="CASCADE"), nullable=False)
     owner_phone_number = Column(String(14), ForeignKey('client.phone_number', ondelete="CASCADE"), nullable=False)
+
+class RecoveryCode(Base):
+    __tablename__ = 'recovery_code'
+
+    code_id = Column(Integer, primary_key=True, nullable=False)
+    client_id = Column(Integer, ForeignKey('client.client_id', ondelete="CASCADE"), nullable=False, unique=True)
+    recovery_code = Column(String, nullable=False)
+    code_created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'), nullable=False)
+    code_expires_at = Column(TIMESTAMP(timezone=True), nullable=False)
+
+class RefreshToken(Base):
+    __tablename__ = 'refresh_token'
+
+    token_id = Column(UUID, primary_key=True, nullable=False)
+    client_id = Column(Integer, ForeignKey('client.client_id', ondelete="CASCADE"), nullable=False)
+    revoked = Column(Boolean, nullable=False)
+    created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'), nullable=False)
+    expires_at = Column(TIMESTAMP(timezone=True), nullable=False)
