@@ -1,57 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
-
-:root {
-    --color-background: #e6d8c1;
-    --color-white: #fff9ef;
-    --color-brown: #421507;
-    --color-primary: #ff62005b;
-    --color-primary-hover: #0056b3;
-    --color-link: #1a73e8;
-    --color-floating-label: #1a73e8;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--color-background);
-    color: var(--color-brown);
-}
-
 .homepage-container {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.top-bar {
+.scheduling {
     display: flex;
-    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
-    width: 100%;
-    box-sizing: border-box;
+
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-white);
+    color: var(--color-brown);
+
+    border-radius: 8px;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 540;
+    font-size: 25px;
+
+    width: 250px;
+    height: 110px;
+
+    margin-top: -40px;
+    
 }
 
-.left-buttons {
-    display: flex;
-    align-items: start;
-    flex-direction: row;
-    padding: 2rem;
+.scheduling img {
+    position: absolute;
+    margin-bottom: 40px;
+    height: 100px;
 }
 
-.logo-top-bar {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.logo-top-bar img {
-    width: clamp(180px, 20vw, 350px);
-    height: auto;
+.scheduling-text {
+    margin-top: 50px;
 }

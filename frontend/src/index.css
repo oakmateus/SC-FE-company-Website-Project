@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+:root {
+    --color-background: #e6d8c1;
+    --color-white: #fff9ef;
+    --color-brown: #421507;
+    --color-primary: #ff62005b;
+    --color-primary-hover: #0056b3;
+    --color-link: #1a73e8;
+    --color-floating-label: #1a73e8;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #fefefe;
-  font-family: Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-brown);
 }

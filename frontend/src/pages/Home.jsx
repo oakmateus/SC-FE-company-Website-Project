@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TopBar from "../components/homepage/TopBar";
+import HomePage from "../components/homepage/HomePage";
 
 import "./home.css";
 
@@ -46,8 +46,8 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="homepage-container">
-            <TopBar user={user}/>
+        <div>
+            <HomePage user={user}/>
         </div>
     );
 }

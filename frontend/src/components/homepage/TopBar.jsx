@@ -1,23 +1,81 @@
 import UserMenu from "./UserMenu";
 import GuestMenu from "./GuestMenu";
 import Logo from "../../assets/Logo.png";
-
+import InstagramIcon from "../../assets/InstagramIcon.png";
+import WhatsappIcon from "../../assets/WhatsappIcon.png";
+import Line from "../../assets/Line.png";
+import EmailIcon from "../../assets/EmailIcon.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import "./TopBar.css"
 
 export default function TopBar({ user }) {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    console.log(isOpen);
     return (
         <nav className="top-bar">
-            <div className="left-buttons">
-                <Link to="/contatos" className="contatos">Contatos</Link>
-                <Link to="/sobre" className="sobre">Sobre</Link>
-            </div>
+            <div className="top-bar-content">
+                <div className="buttons">
+                    <div className="contact-menu">
+                        <button className="left-button" onClick={() => setIsOpen(!isOpen)}>
+                            <span>Contatos ☰</span>
+                        </button>
 
-            <div className="logo-top-bar">
-                <img src={Logo} alt="Logo" />
-            </div>
+                        {isOpen && (
+                            <div className="dropdown">
+                                <a className="social-media" href="https://www.instagram.com/silvacarvalhofestaseventos/">
+                                    <div className="instagram-icon">
+                                        <img src={InstagramIcon} alt="insta" />
+                                    </div>
+
+                                    <span>Instagram</span>
+                                </a>
+
+                                <a className="chat-bot" href="">
+                                    <div className="whatsapp-icon">
+                                        <img src={WhatsappIcon} alt="bot" />
+                                    </div>
+
+                                    <span>ChatBot</span>
+                                </a>
+
+                                <a className="whatsapp-chat" href="https://wa.me/5521992983104">
+                                    <div className="whatsapp-icon">
+                                        <img src={WhatsappIcon} alt="wpp" />
+                                    </div>
+
+                                    <span>Atendimento</span>
+                                </a>
+
+                                <div className="line">
+                                    <img src={Line} alt="line" />
+                                </div>
+
+                                <a className="email" href="mailto:silvacarvalhofestaseventos@gmail.com">
+                                    <div className="email-icon">
+                                        <img src={EmailIcon} alt="email" />
+                                    </div>
+
+                                    <span>E-Mail</span>
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                <Link to="/sobre" className="left-button">Sobre 🛈</Link>
             
-            <div className="left-buttons">
-                {user ? <UserMenu user={user} /> : <GuestMenu />}
+
+                <div className="logo-top-bar">
+                    <img src={Logo} alt="Logo" />
+                </div>
+                
+                <div className="buttons">
+                    {user ? <UserMenu user={user} /> : <GuestMenu />}
+                </div>
             </div>
         </nav>
     );

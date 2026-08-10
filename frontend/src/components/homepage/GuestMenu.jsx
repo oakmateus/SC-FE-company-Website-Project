@@ -4,8 +4,8 @@ export default function GuestMenu() {
 
     return (
         <>
-            <Link to="/login">Entrar</Link>
-            <Link to="/conta/registro">Registrar</Link>
+            <Link className="right-button" to="/login">Entrar</Link>
+            <Link className="right-button" to="/conta/registro">Registrar</Link>
         </>
     );
 }

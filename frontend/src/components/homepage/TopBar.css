@@ -1,0 +1,190 @@
+.top-bar {
+    width: 100%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+}
+
+.top-bar-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.left-button,
+.right-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-white);
+    color: var(--color-brown);
+
+    border-radius: 8px;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 540;
+    font-size: 20px;
+
+    width: 200px;
+
+    border: none;
+    cursor: pointer;
+}
+
+.contact-menu {
+    display: inline-block;
+    position: relative;
+    z-index: 1001;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 8px;
+
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(59, 31, 3, 0.583);
+
+    width: 200px;
+    height: 150px;
+
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-size: 15px;
+
+    z-index: 1002;
+}
+
+.social-media {
+    color: var(--color-brown);
+
+    margin-top: 10px;
+    margin-left: -3px;
+}
+
+.instagram-icon img,
+.whatsapp-icon img {
+    position: absolute;
+    left: 32px;
+    height: 20px;
+}
+
+.chat-bot {
+    color: var(--color-brown);
+
+    margin-top: 10px;
+    margin-left: -20px;
+}
+
+.whatsapp-chat {
+    color: var(--color-brown);
+
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.line img {
+    position: absolute;
+    right: -35px;
+    margin-top: -60px;
+    height: 150px;
+    pointer-events: none;
+}
+
+.email {
+    color: var(--color-brown);
+
+    margin-top: 30px;
+    margin-left: -30px;
+}
+
+.email-icon img {
+    position: absolute;
+    left: 23px;
+    margin-top: -3px;
+    width: auto;
+    height: 25px;
+}
+
+.history-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-white);
+    color: var(--color-brown);
+
+    border-radius: 8px;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 540;
+    font-style: normal;
+    font-size: 20px;
+
+    width: 120px;
+}
+
+.profile-button {
+    position: relative;
+    display: inline-flex;
+    justify-content: left;
+    align-items: center;
+
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-white);
+    color: var(--color-brown);
+
+    border-radius: 8px;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 540;
+    font-style: normal;
+    font-size: 20px;
+
+    width: 280px;
+}
+
+.profile-picture img {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 90px;
+}
+
+.logo-top-bar {
+    display: flex;
+    align-items: center;
+}
+
+.logo-top-bar img {
+    width: clamp(180px, 20vw, 350px);
+    height: auto;
+}
