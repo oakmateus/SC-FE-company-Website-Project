@@ -46,7 +46,7 @@ export default function LoginForm( {formData, handleChange, error} ) {
                                 Lembre de mim
                             </label>
 
-                            <a className="forgot-password" href="/login/recuperacao">Esqueci minha senha</a>
+                            <a className="forgot-password" href="/login/recover">Esqueci minha senha</a>
                         </div>
 
                         <button className="submit-login" type='submit'>
@@ -59,7 +59,7 @@ export default function LoginForm( {formData, handleChange, error} ) {
                             </div>
                         )}
 
-                        <p className="form-link-login">Primeira vez por aqui? <a href="/conta/registro">Cadastre-se</a></p>
+                        <p className="form-link-login">Primeira vez por aqui? <a href="/register">Cadastre-se</a></p>
 
                     </div>
                 </div>

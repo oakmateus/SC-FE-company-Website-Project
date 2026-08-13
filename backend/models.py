@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, ForeignKey, Integer, Float, UUID, Boolean
+from sqlalchemy import Column, String, ForeignKey, Integer, Numeric, UUID, Boolean, Date
 from sqlalchemy.sql import text
+from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
 
@@ -13,21 +14,24 @@ class Client(Base):
     client_username = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'), nullable=False)
 
-class CompleteServicePack(Base):
-    __tablename__ = 'complete_service_pack'
+class ServiceAppointment(Base):
+    __tablename__ = 'service_appointments'
 
     appointment_id = Column(Integer, primary_key=True, nullable=False)
-    complete_name = Column(String, nullable=False)
-    cep_number = Column(String(8), nullable=True)
-    state_name = Column(String(30), nullable=True)
-    city_name = Column(String(30), nullable=True)
-    thoroughfare = Column(String, nullable=True)
-    thoroughfare_number = Column(String(10), nullable=True)
-    extra_locale_info = Column(String(50), nullable=True)
-    guests_number = Column(Integer, nullable=True)
-    inicial_budget = Column(Float, nullable=True)
-    client_owner_id = Column(Integer, ForeignKey('client.client_id', ondelete="CASCADE"), nullable=False)
-    owner_phone_number = Column(String(14), ForeignKey('client.phone_number', ondelete="CASCADE"), nullable=False)
+    client_id = Column(Integer, ForeignKey('client.client_id', ondelete="CASCADE"), nullable=False)
+    client_username = Column(String, nullable=False)
+    phone_number = Column(String, nullable=False)
+    created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'), nullable=False)
+    event_types = Column(String, nullable=False)
+    custom_event = Column(String(150), nullable=True)
+    service_types = Column(ARRAY(String), nullable=False)
+    custom_service = Column(String(300), nullable=True)
+    optional_kitchens = Column(ARRAY(String), nullable=False, default=list)
+    estimated_event_date = Column(Date, nullable=False)
+    estimated_guests_quantity = Column(Integer, nullable=True)
+    estimated_budget = Column(Numeric(10, 2), nullable=False)
+    event_address = Column(String(300), nullable=False)
+    optional_observations = Column(String(1000), nullable=True)
 
 class RecoveryCode(Base):
     __tablename__ = 'recovery_code'

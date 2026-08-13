@@ -87,7 +87,7 @@ def refresh_token(db: Session = Depends(get_db), client: str = Depends(oauth2.ge
 
 # Recovery Account
 
-@router.post("/recuperacao")
+@router.post("/recover")
 def forgot_password(credentials: schemas.ConfirmationStep, db: Session = Depends(get_db)):
 
     current_account = db.query(models.Client).filter(models.Client.email == credentials.email).first()
@@ -140,7 +140,7 @@ def forgot_password(credentials: schemas.ConfirmationStep, db: Session = Depends
 
     return {"recovery_token": recovery_token}
 
-@router.post("/recuperacao/confirmacao", status_code=status.HTTP_201_CREATED)
+@router.post("/recover/confirmation", status_code=status.HTTP_201_CREATED)
 def confirm_recovery(input: schemas.RecoveryCredentials, db: Session = Depends(get_db), token: str = Depends(oauth2.get_recovery_client)):
 
     recovery_credentials = db.query(models.RecoveryCode).filter(models.RecoveryCode.client_id == token.client_id).first()

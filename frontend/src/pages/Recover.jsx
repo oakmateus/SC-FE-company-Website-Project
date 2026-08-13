@@ -25,7 +25,7 @@ function Recover() {
         setError(null)
 
         try {
-            const response = await fetch('http://localhost:8000/login/recuperacao', {
+            const response = await fetch('http://localhost:8000/login/recover', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -43,7 +43,7 @@ function Recover() {
                 }
             } else {
                 sessionStorage.setItem('recovery_token', data.recovery_token);
-                navigate('/login/recuperacao/confirmacao');
+                navigate('/login/recover/confirmation');
             }
         } catch (err) {
             setError('Algum erro ocorreu. Por favor, tente novamente.');

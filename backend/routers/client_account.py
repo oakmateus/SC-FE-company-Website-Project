@@ -7,11 +7,11 @@ from ..database import get_db
 from .. import schemas, models, oauth2 
 
 router = APIRouter(
-    prefix="/conta",
+    prefix="/register",
     tags=["Client Account Register"]
     )
 
-@router.post("/registro", status_code=status.HTTP_201_CREATED, response_model=schemas.ClientRegisterOut)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.ClientRegisterOut)
 def create_client_account(credentials: schemas.ClientRegisterCredentials, db: Session = Depends(get_db)):
 
     client_username_validation.username_validation(credentials.client_username)

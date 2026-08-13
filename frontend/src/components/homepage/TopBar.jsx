@@ -64,9 +64,8 @@ export default function TopBar({ user }) {
                             </div>
                         )}
                     </div>
+                    <Link to="/about" className="left-button">Sobre</Link>
                 </div>
-
-                <Link to="/sobre" className="left-button">Sobre 🛈</Link>
             
 
                 <div className="logo-top-bar">

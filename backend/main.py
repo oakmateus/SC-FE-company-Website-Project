@@ -1,8 +1,6 @@
 from fastapi import FastAPI, Depends
-from .routers import client_account, client_account_auth
+from .routers import client_account, client_account_auth, authenticated_homepage
 from fastapi.middleware.cors import CORSMiddleware
-
-from . import oauth2
 
 app = FastAPI()
 
@@ -18,11 +16,8 @@ app.add_middleware(
 
 app.include_router(client_account.router)
 app.include_router(client_account_auth.router)
+app.include_router(authenticated_homepage.router)
 
 @app.get("/")
-def root():
+def homepage():
     return
-
-@app.get("/users/me")
-def current_client(client = Depends(oauth2.get_current_client)):
-    return client

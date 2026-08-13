@@ -1,0 +1,39 @@
+.background-shapes {
+    position: fixed;
+    inset: 0;
+    min-height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.background-circle,
+.background-triangle {
+    position: absolute;
+    top: -150px;
+    animation-name: falling-shape;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.background-circle {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--color-brown);
+    border-radius: 50%;
+}
+
+.background-triangle {
+    width: 25px;
+    height: 25px;
+}
+
+@keyframes falling-shape {
+    0% {
+        transform: translateY(-150px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(calc(100vh + 150px)) rotate(360deg);
+    }
+}

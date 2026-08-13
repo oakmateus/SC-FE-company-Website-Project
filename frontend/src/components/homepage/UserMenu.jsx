@@ -6,11 +6,11 @@ export default function UserMenu({ user }) {
 
     return (
         <>
-            <Link className="history-button" to="/conta/historico">
+            <Link className="history-button" to="/history">
                 Histórico
             </Link>
 
-            <Link className="profile-button" to="/conta/perfil">
+            <Link className="profile-button" to="/users/me/profile">
                 <span>Acessar Perfil</span>
 
                 <div className="profile-picture">
