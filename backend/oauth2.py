@@ -94,7 +94,13 @@ def get_current_user(
 
    client = db.query(models.Client).filter(models.Client.client_id == token.client_id).first()
 
-   return client 
+   if not client:
+      raise credentials_exception
+
+   if expected_scope == "refresh":
+      return client, token
+
+   return client
 
 def get_current_client(token: str = Depends(oauth2_scheme), db: Session = Depends(database.get_db)):
    return get_current_user(settings.secret_key, "access", token, db)

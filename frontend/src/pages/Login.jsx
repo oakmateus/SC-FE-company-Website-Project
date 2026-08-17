@@ -50,18 +50,13 @@ function Login() {
                 } else {
                     setError(data.detail);
                 }
+
+                return;
             } else {
                 sessionStorage.setItem("access_token", data.access_token);
 
                 if (data.refresh_token) {
                     localStorage.setItem("refresh_token", data.refresh_token);
-
-                    const refreshed = await refreshSession(data, setError);
-
-                    if (!refreshed) {
-                        return;
-                    }
-
                 }
                 navigate('/users/me');
             }

@@ -1,33 +1,52 @@
-import "./BackgroundShapes.css"
+import { useState } from "react";
+import "./BackgroundShapes.css";
 
 export default function BackgroundShapes() {
     const circleCount = 10;
     const triangleCount = 10;
 
+    const [circles] = useState(() =>
+        Array.from({ length: circleCount }, (_, index) => ({
+            id: `circle-${index}`,
+            left: `${Math.random() * 100}%`,
+            animationDuration: `${8 + Math.random() * 12}s`,
+            animationDelay: `${Math.random() * -15}s`,
+        }))
+    );
+
+    const [triangles] = useState(() =>
+        Array.from({ length: triangleCount }, (_, index) => ({
+            id: `triangle-${index}`,
+            left: `${Math.random() * 100}%`,
+            animationDuration: `${8 + Math.random() * 12}s`,
+            animationDelay: `${Math.random() * -15}s`,
+        }))
+    );
+
     return (
         <div className="background-shapes">
 
-            {Array.from({ length: circleCount }).map((_, index) => (
+            {circles.map((circle) => (
                 <span
-                    key={`circle-${index}`}
+                    key={circle.id}
                     className="background-circle"
                     style={{
-                        left: `${Math.random() * 100}%`,
-                        animationDuration: `${8 + Math.random() * 12}s`,
-                        animationDelay: `${Math.random() * -15}s`,
+                        left: circle.left,
+                        animationDuration: circle.animationDuration,
+                        animationDelay: circle.animationDelay,
                     }}
                 />
             ))}
 
-            {Array.from({ length: triangleCount }).map((_, index) => (
+            {triangles.map((triangle) => (
                 <svg
-                    key={`triangle-${index}`}
+                    key={triangle.id}
                     className="background-triangle"
                     viewBox="0 0 100 100"
                     style={{
-                        left: `${Math.random() * 100}%`,
-                        animationDuration: `${8 + Math.random() * 12}s`,
-                        animationDelay: `${Math.random() * -15}s`,
+                        left: triangle.left,
+                        animationDuration: triangle.animationDuration,
+                        animationDelay: triangle.animationDelay,
                     }}
                 >
                     <polygon

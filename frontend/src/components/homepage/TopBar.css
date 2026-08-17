@@ -197,3 +197,214 @@
     height: auto;
     display: block;
 }
+
+@media (min-width: 700px) and (max-width: 1200px) {
+
+    .top-bar {
+        width: 700px;
+        padding: 0.75rem;
+    }
+
+    .top-bar-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 8px 10px;
+    }
+
+    .logo-top-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+    }
+
+    .about,
+    .register,
+    .history-button {
+        display: none;
+    }
+
+    .left-button,
+    .right-button {
+        width: 150px;
+        font-size: 15px;
+    }
+
+    .contact-menu {
+        width: auto;
+    }
+
+    .profile-button {
+        width: 140px;
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+
+    .profile-button img {
+        width: 120px;
+        height: 70px;
+        right: -60px;
+    }
+
+    .dropdown {
+        display: flex;
+        justify-content: right;
+        align-items: flex-start;
+        padding-inline: 25px;
+        font-size: 12px;
+        width: 150px;
+        height: 125px;
+        border: 2px solid var(--color-brown);
+        margin-top: 5px;
+    }
+    
+    .dropdown img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .instagram-icon img,
+    .whatsapp-icon img {
+        position: absolute;
+        margin-left: -35px;
+        margin-top: -3px;
+    }
+
+    .email-icon img {
+        margin-left: -25px;
+        margin-top: -2px;
+        height: auto;
+        width: 30px;
+    }
+
+    .line img {
+        position: absolute;
+        margin-right: -25px;
+        margin-top: -74px;
+        height: 150px;
+    }
+
+    .whatsapp-chat,
+    .social-media,
+    .chat-bot,
+    .email {
+        margin: 7px 0px;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-bar {
+        width: 350px;
+        padding: 0.4rem;
+    }
+
+    .top-bar-content {
+        padding: 8px 10px;
+        gap: 20px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .left-button,
+    .right-button {
+        width: 60px;
+        font-size: 9px;
+        padding: 0.6rem 1rem;
+    }
+
+    .logo-top-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .logo-top-bar img {
+        width: 100%;
+    }
+
+
+    .about,
+    .register {
+        display: none;
+    }
+
+    .profile-button {
+        display: flex;
+        background-color: var(--color-white);
+        height: 30px;
+        width: 60px;
+        font-size: 0px;
+    }
+
+    .history-button {
+        display: none;
+    }
+
+    .profile-picture img {
+        height: 55px;
+        width: 100px;
+        right: -20px;
+    }
+
+    .dropdown {
+        display: flex;
+        justify-content: right;
+        align-items: flex-start;
+        padding-inline: 25px;
+        font-size: 8px;
+        width: 85px;
+        height: 100px;
+        left: -13px;
+        border: 2px solid var(--color-brown);
+        margin-top: 5px;
+    }
+    
+    .dropdown img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .instagram-icon img,
+    .whatsapp-icon img {
+        position: absolute;
+        margin-left: -35px;
+        margin-top: -3px;
+    }
+
+    .email-icon img {
+        margin-left: -25px;
+        margin-top: -2px;
+        height: auto;
+        width: 30px;
+    }
+
+    .line img {
+        position: absolute;
+        margin-right: 6px;
+        margin-top: -37px;
+        height: 80px;
+    }
+
+    .whatsapp-chat,
+    .social-media,
+    .chat-bot,
+    .email {
+        margin: 7px 0px;
+    }
+}

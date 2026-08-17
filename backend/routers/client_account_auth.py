@@ -61,14 +61,16 @@ def login_client_account(credentials: schemas.ClientLoginCredentials, db: Sessio
         return {"access_token": access_token, "token_type": "bearer"}
 
 @router.post("/refresh", response_model=schemas.Token)
-def refresh_token(db: Session = Depends(get_db), client: str = Depends(oauth2.get_refresh_client)):
+def refresh_token(db: Session = Depends(get_db), refresh_token = Depends(oauth2.get_refresh_client)):
+
+    client, token = refresh_token
 
     current_account = db.query(models.Client).filter(models.Client.client_id == client.client_id).first()
     if not current_account:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Credenciais não atorizadas")
 
-    current_token = db.query(models.RefreshToken).filter(models.RefreshToken.token_id == client.jti).first()
+    current_token = db.query(models.RefreshToken).filter(models.RefreshToken.token_id == token.jti).first()
     if not current_token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Credenciais não atorizadas")

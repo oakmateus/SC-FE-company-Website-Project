@@ -1,5 +1,5 @@
 import TopBar from "./TopBar";
-import BottomBar from "./BottomBar";
+import BottomBar from "../BottomBar";
 import ImageCarousel from "./ImageCarousel";
 import BackgroundShapes from "../BackgroundShapes";
 

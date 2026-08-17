@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     recovery_secret_key: str
     recovery_token_expire_minutes: int
     resend_api_key: str
+    development_email: str
 
     class Config:
         env_file = ".env"

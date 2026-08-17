@@ -21,6 +21,7 @@
     height: auto;
     display: block;
     padding: 0.4rem;
+    border: 2px solid var(--color-brown);
     border-radius: 8px;
     background-color: var(--color-white);
     margin-top: 25px;
@@ -28,6 +29,7 @@
 
 .form-register-container {
     position: relative;
+    border: 2px solid var(--color-brown);
     background-color: var(--color-white);
     padding: clamp(1rem, 3vw, 2.5rem);
     width: 100%;

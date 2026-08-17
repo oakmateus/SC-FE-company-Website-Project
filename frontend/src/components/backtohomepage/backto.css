@@ -1,0 +1,42 @@
+.back-to {
+    display: flex;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: -25px;
+}
+
+.back-to-user,
+.back-to-guest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    
+    width: 52px;
+    height: 50px;
+    border: 2px solid var(--color-brown);
+    border-radius: 50%;
+    background-color: var(--color-white);
+    color: var(--color-brown);
+}
+
+@media (max-width: 600px) {
+    .back-to {
+        display: flex;
+        margin-left: 10px;
+        margin-top: 15px;
+        margin-bottom: -15px;
+    }
+
+    .back-to-guest,
+    .back-to-user {
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+    }
+}

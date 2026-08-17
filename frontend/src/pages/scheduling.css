@@ -1,0 +1,596 @@
+.scheduling-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.scheduling-page main {
+    flex: 1;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    margin-top: 25px;
+    gap: 50px;
+}
+
+.title-section img {
+    width: 300px;
+    height: auto;
+    display: block;
+    padding: 0.4rem;
+    border: 2px solid var(--color-brown);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    margin-top: 25px;
+}
+
+.scheduling-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 300px;
+    height: auto;
+
+    padding: 0.4rem;
+    border: 2px solid var(--color-brown);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    margin-top: 25px;
+}
+
+.scheduling-title h1 {
+    font-family: "Lobster", sans-serif;
+    font-weight: 500;
+    font-size: 45px;
+}
+
+.scheduling-title p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.scheduling-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+.scheduling-container {
+    
+    border: 2px solid var(--color-brown);
+    background-color: var(--color-white);
+    padding: clamp(1rem, 3vw, 2.5rem);
+
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(59, 31, 3, 0.583);
+
+    margin-bottom: 50px;
+}
+
+.checklist-group {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.service-type-group,
+.event-type-group {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.custom-event-group,
+.custom-service-group {
+    margin-top: 5px;
+}
+
+.custom-event-group label,
+.custom-service-group label {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.service-type-button,
+.event-type-button {
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-brown);
+    color: var(--color-white);
+
+    border-radius: 8px;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 540;
+    font-size: 15px;
+
+    width: 200px;
+
+    border: none;
+    cursor: pointer;
+}
+
+.services-list,
+.events-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 8px;
+    width: 200px;
+    min-height: 150px;
+    height: auto;
+    box-shadow: 0 5px 10px rgba(59, 31, 3, 0.583);
+    margin-top: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.list-content label {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    gap: 5px;
+}
+
+.service-list-content label {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    gap: 5px;
+}
+
+.optional-kitchens-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 8px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0 -3px 10px rgba(59, 31, 3, 0.583);
+}
+
+.custom-text-box textarea {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+
+    color: var(--color-brown);
+    
+    border: 2px solid var(--color-brown);
+    background-color: var(--color-background);
+    border-radius: 10px;
+    outline-style: none;
+    
+    font-size: 12px;
+
+    padding-inline: 8px;
+    padding-top: 5px;
+
+    resize: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    width: 200px;
+    height: 80px;
+}
+
+.custom-text-box textarea::placeholder {
+    font-size: 12px;
+    text-align: center;
+}
+
+.number-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+
+}
+
+.estimated-guests-quantity input,
+.estimated-budget input {
+    display: flex;
+    flex-direction: column;
+
+    outline-style: none;
+    border: 2px solid var(--color-background);
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 8px;
+
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    padding-inline: 8px;
+}
+
+.estimated-guests-quantity input::placeholder,
+.estimated-budget input::placeholder {
+    font-size: 14px;
+}
+
+.estimated-guests-quantity span,
+.estimated-budget span {
+    display: flex;
+    justify-content: center;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.date-address-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+}
+
+.calendar input {
+    display: flex;
+    flex-direction: column;
+
+    outline-style: none;
+    border: 2px solid var(--color-brown);
+    background-color: var(--color-background);
+    color: var(--color-brown);
+    border-radius: 8px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+
+    padding-inline: 15px;
+
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.calendar span {
+    display: flex;
+    justify-content: center;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.address textarea {
+    display: flex;
+    flex-direction: column;
+
+    outline-style: none;
+    border: 2px solid var(--color-background);
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 8px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+
+    padding-inline: 15px;
+    padding-top: 8px;
+
+    resize: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.address span {
+    display: flex;
+    justify-content: center;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+.optional-observations {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.optional-observations textarea {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+
+    color: var(--color-brown);
+    
+    border: 2px solid var(--color-brown);
+    background-color: var(--color-background);
+    border-radius: 10px;
+    outline-style: none;
+    
+    font-size: 12px;
+
+    padding-inline: 8px;
+    padding-top: 5px;
+
+    resize: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    width: auto;
+    height: 80px;
+}
+
+.optional-observations span {
+    display: flex;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+
+    margin-bottom: 2px;
+}
+
+.scheduling-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 50px;
+
+    margin: auto;
+
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    padding-inline: 8px;
+
+    font-family: "Poppins", sans-serif;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 700;
+
+    box-shadow: 0px 8px 20px var(--color-background);
+
+    margin-top: 20px
+}
+
+.message-scheduling,
+.error-scheduling {
+    text-align: center;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.message-scheduling {
+    color: green;
+}
+
+.error-scheduling {
+    color: red;
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+    .checklist-group {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .title-section {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .title-section img {
+        width: min(300px, 90vw);
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+
+    .scheduling-title {
+        width: min(250px, 90vw);
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+
+
+    .scheduling-title h1 {
+        font-size: 38px;
+    }
+
+    .scheduling-form {
+        margin-top: 25px;
+        padding: 0 10px;
+    }
+
+    .scheduling-container {
+        width: 100%;
+        max-width: 500px;
+        padding: 1rem;
+        border-radius: 25px;
+    }
+
+    .checklist-group {
+        width: 100%;
+        gap: 10px;
+        justify-content: center;
+        align-items: none;
+    }
+
+    .service-type-button,
+    .event-type-button {
+        width: 100%;
+        max-width: 200px;
+        padding: 0.7rem 0.5rem;
+        font-size: 14px;
+    }
+
+    .services-list,
+    .events-list {
+        width: 100%;
+        max-width: 155px;
+    }
+
+    .list-content label {
+        font-size: 13px;
+        gap: 5px;
+    }   
+
+    .service-list-content label {
+        font-size: 14px;
+        gap: 5px;
+    }
+
+    .optional-kitchens-list {
+        width: 155px;
+    }
+
+    .custom-event-group label,
+    .custom-service-group label {
+        font-size: 12px;
+    }
+
+    .custom-event-group textarea,
+    .custom-service-group textarea {
+        width: 150px;
+        height: 80px;
+    }
+
+    .custom-event-group textarea::placeholder,
+    .custom-service-group textarea::placeholder {
+        font-size: 10px;
+    }
+
+    .number-fields {
+        gap: 10px;
+    }
+
+    .estimated-guests-quantity,
+    .estimated-budget {
+        width: calc(50% - 5px);
+    }
+
+    .estimated-guests-quantity input,
+    .estimated-budget input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .date-address-group {
+        gap: 10px;
+    }
+
+    .calendar,
+    .address {
+        width: calc(50% - 5px);
+    }
+
+    .calendar input,
+    .address textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .address textarea {
+        font-size: 11px;
+    }
+
+    .address textarea::placeholder {
+        font-size: 12px;
+    }
+
+    .address span {
+        font-size: 8px;
+    }
+
+    .optional-observations textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .optional-observations span {
+        font-size: 16px;
+    }
+}
+
+    @media (max-width: 380px) {
+
+        .scheduling-container {
+            padding: 0.75rem;
+        }
+
+        .checklist-group {
+            gap: 6px;
+        }
+
+        .service-type-button,
+        .event-type-button {
+            font-size: 12px;
+        }
+
+        .custom-event-group,
+        .custom-service-group {
+            margin-top: 2px;
+        }
+
+
+        .events-list {
+            width: 145px;
+        }
+
+        .number-fields,
+        .date-address-group {
+            gap: 6px;
+        }
+
+        .estimated-guests-quantity input,
+        .estimated-budget input,
+        .calendar input,
+        .address textarea {
+            font-size: 12px;
+            padding-inline: 8px;
+        }
+
+        .estimated-guests-quantity span,
+        .estimated-budget span,
+        .calendar span {
+            font-size: 11px;
+        }
+    }

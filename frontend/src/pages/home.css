@@ -13,6 +13,7 @@
 
     padding: 0.75rem 1.5rem;
 
+    border: 2px solid var(--color-brown);
     background-color: var(--color-white);
     color: var(--color-brown);
 
@@ -68,7 +69,8 @@
     width: 100%;
     max-width: 400px;
     height: 100px;
-    
+
+    border: 2px solid var(--color-brown);
     border-radius: 10px;
     color: var(--color-brown);
     background-color: var(--color-white);
@@ -160,4 +162,169 @@
     height: auto;
 
     box-shadow: 0 20px 50px rgba(59, 31, 3, 0.583);
+}
+
+@media (min-width: 700px) and (max-width: 1200px) {
+
+    .second-content {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .testimonials-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .bride-testimonial,
+    .guest-testimonial {
+        width: 100%;
+    }
+
+    .testimonial-box-one,
+    .testimonial-box-two {
+        height: auto;
+        min-height: 190px;
+        width: 300px;
+    }
+
+    .pictures-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 100px;
+    }
+
+    .pictures-group img {
+        width: min(290px, 90%);
+    }
+}
+
+@media (min-width: 450px) and (max-width: 600) {
+    .scheduling {
+        width: 100%;
+        max-width: 150px;
+        box-sizing: border-box;
+        height: 90px;
+        margin-top: -90px;
+    }
+
+    .scheduling-text {
+        font-size: 15px;
+        margin-top: 40px;
+    }
+    .scheduling img {
+        margin-top: 10px;
+        height: 80px;
+    }
+
+    .second-content {
+        margin-top: 30px;
+        margin-bottom: 60px;
+        gap: 25px;
+    }
+
+    .title-box {
+        width: 80%;
+    }
+
+    .bride-testimonial,
+    .guest-testimonial {
+        width: 100%;
+        max-width: 190px;
+    }
+
+    .bride-testimonial img,
+    .guest-testimonial img {
+        width: 100%;
+        max-width: 190px;
+        height: auto;
+    }
+
+    .label {
+        font-size: 15px;
+        margin-top: -10px;
+    }
+
+    .testimonial-box-one,
+    .testimonial-box-two {
+        width: 100%;
+        max-width: 200px;
+        font-size: 13px;
+        padding: 20px;
+    }
+
+    .pictures-group img {
+        width: 100%;
+        max-width: 190px;
+    }
+}
+
+ @media (max-width: 450px) {
+
+    .scheduling {
+        width: 100%;
+        max-width: 150px;
+        box-sizing: border-box;
+        height: 90px;
+        margin-top: -90px;
+    }
+
+    .scheduling-text {
+        font-size: 15px;
+        margin-top: 40px;
+    }
+    .scheduling img {
+        margin-top: 10px;
+        height: 80px;
+    }
+
+    .second-content {
+        margin-top: 30px;
+        margin-bottom: 60px;
+        gap: 25px;
+    }
+
+    .title-box {
+        width: 80%;
+    }
+
+    .title-box h1 {
+        font-size: 30px;
+    }
+
+    .title-box p {
+        font-size: 13px;
+    }
+
+    .bride-testimonial,
+    .guest-testimonial {
+        width: 170px;
+    }
+
+    .bride-testimonial img,
+    .guest-testimonial img {
+        width: 170px;
+        height: auto;
+    }
+
+    .label {
+        font-size: 14px;
+        margin-top: -10px;
+    }
+
+    .testimonial-box-one,
+    .testimonial-box-two {
+        width: 170px;
+        max-width: 170px;
+        padding: 15px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+
+    .pictures-group img {
+        width: 170px;
+        max-width: 170px;
+        margin-top: -15px;
+    }
 }

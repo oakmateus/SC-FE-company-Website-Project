@@ -5,7 +5,9 @@ export default function GuestMenu() {
     return (
         <>
             <Link className="right-button" to="/login">Entrar</Link>
-            <Link className="right-button" to="/register">Registrar</Link>
+            <div className="register">
+                <Link className="right-button" to="/register">Registrar</Link>
+            </div>
         </>
     );
 }
