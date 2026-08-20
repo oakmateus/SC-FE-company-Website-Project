@@ -14,7 +14,6 @@ export default function TopBar({ user }) {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    console.log(isOpen);
     return (
         <nav className="top-bar">
             <div className="top-bar-content">

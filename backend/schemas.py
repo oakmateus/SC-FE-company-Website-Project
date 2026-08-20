@@ -74,3 +74,12 @@ class Scheduling(BaseModel):
     estimated_gests_quantity: Optional[int] = None
     estimated_budget: Decimal = Field(max_digits=10, decimal_places=2)
     optional_observatios: Optional[str] = None
+
+# Update Account Fields
+
+class UpdateAccount(BaseModel):
+    email: Optional[EmailStr] = None
+    phone_number: Optional[BrazilPhoneNumber] = None
+    new_password: Optional[str] = None
+    new_username: Optional[str] = None
+    password: Optional[str] = None

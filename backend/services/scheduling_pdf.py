@@ -1,8 +1,6 @@
 from io import BytesIO
 
 from pypdf import PdfReader, PdfWriter
-from copy import deepcopy
-from reportlab.lib import colors
 from reportlab.lib.colors import HexColor
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
@@ -14,6 +12,7 @@ from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
     Spacer,
+    PageBreak
 )
 from reportlab.lib.enums import TA_CENTER
 
@@ -24,19 +23,7 @@ pdfmetrics.registerFont(
     )
 )
 
-def scheduling_pdf(scheduling):
-
-    content_buffer = BytesIO()
-    width, height = A4
-
-    doc = SimpleDocTemplate(
-        content_buffer,
-        pagesize=A4,
-        leftMargin=25*mm,
-        rightMargin=25*mm,
-        topMargin=28*mm,
-        bottomMargin=25*mm
-    )
+def build_story(scheduling):
 
     title_style = ParagraphStyle(
         "Title",
@@ -236,24 +223,70 @@ def scheduling_pdf(scheduling):
             )
         )
 
+    return story
+
+def scheduling_pdf(scheduling):
+
+    content_buffer = BytesIO()
+    width, height = A4
+
+    doc = SimpleDocTemplate(
+        content_buffer,
+        pagesize=A4,
+        leftMargin=25*mm,
+        rightMargin=25*mm,
+        topMargin=28*mm,
+        bottomMargin=25*mm
+    )
+
+    story = build_story(scheduling)
+
     doc.build(story)
+
+    return finalize_pdf(content_buffer)
+
+def history_pdf(schedulings):
+
+    content_buffer = BytesIO()
+    width, height = A4
+
+    doc = SimpleDocTemplate(
+        content_buffer,
+        pagesize=A4,
+        leftMargin=25*mm,
+        rightMargin=25*mm,
+        topMargin=28*mm,
+        bottomMargin=25*mm
+    )
+
+    story = []
+
+    for scheduling in schedulings:
+        story.extend(build_story(scheduling))
+        story.append(PageBreak())
+
+    doc.build(story)
+
+    return finalize_pdf(content_buffer)
+
+def finalize_pdf(content_buffer):
 
     content_buffer.seek(0)
 
-    letterhead = PdfReader("backend/assets/letterhead.pdf")
-
     content = PdfReader(content_buffer)
-
     writer = PdfWriter()
 
-    background_page = letterhead.pages[0]
-    background_page.merge_page(content.pages[0])
+    for page in content.pages:
 
-    writer.add_page(background_page)
+        with open("backend/assets/letterhead.pdf", "rb") as file:
+            letterhead = PdfReader(file)
+            background_page = letterhead.pages[0]
+
+            background_page.merge_page(page)
+
+            writer.add_page(background_page)
 
     output = BytesIO()
     writer.write(output)
-
-    output.seek(0)
 
     return output.getvalue()

@@ -3,6 +3,9 @@
     margin-left: 50px;
     margin-top: 25px;
     margin-bottom: -25px;
+
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .back-to-user,

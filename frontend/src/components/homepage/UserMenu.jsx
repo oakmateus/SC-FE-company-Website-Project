@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import ProfilePicture from "../../assets/ProfilePicture.png"
+import History from "../historybutton/History";
 
 
 export default function UserMenu({ user }) {
 
     return (
         <>
-            <Link className="history-button" to="/history">
-                Histórico
-            </Link>
-
+            <History />
+            
             <Link className="profile-button" to="/users/me/profile">
                 <span>Acessar Perfil</span>
 

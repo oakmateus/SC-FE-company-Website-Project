@@ -6,6 +6,7 @@ import Recover from './pages/Recover';
 import Scheduling from './pages/Scheduling';
 import RecoverConfirmation from './pages/RecoverConfirmation';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/users/me' element={<Home />}/>
+        <Route path='/users/me/profile' element={<Profile />}/>
         <Route path='/users/me/scheduling' element={<Scheduling />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
