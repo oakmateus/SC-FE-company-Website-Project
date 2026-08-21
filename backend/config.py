@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     database_username: str
     secret_key: str
     access_token_expire_minutes: int
-    access_token_expire_days: int
+    refresh_token_expire_days: int
     algorithm: str
     recovery_secret_key: str
     recovery_token_expire_minutes: int

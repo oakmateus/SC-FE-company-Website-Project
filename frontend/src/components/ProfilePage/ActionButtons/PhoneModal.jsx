@@ -1,4 +1,4 @@
-export default function PhoneModal({ formData, handleChange, onClose, handlePhone }) {
+export default function PhoneModal({ formData, handleChange, onClose, handlePhone, error }) {
     return (
         <div className="overlay">
             <form className="phone-modal" onSubmit={handlePhone}>
@@ -31,6 +31,11 @@ export default function PhoneModal({ formData, handleChange, onClose, handlePhon
                         Cancelar
                     </button>
                 </div>
+                {error && (
+                    <div className="profile-error-message">
+                        {error}
+                    </div>
+                )}
             </form>
         </div>
     );

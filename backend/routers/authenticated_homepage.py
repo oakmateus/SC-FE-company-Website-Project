@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from .. import oauth2, schemas, models, config
 from ..services import scheduling_pdf
-from ..validations import scheduling_validations, hashing
+from ..validations import scheduling_validations, hashing, client_username_validation, password_validation
 
 import base64
 
@@ -120,6 +120,8 @@ def change_username(credentials: schemas.UpdateAccount, db: Session = Depends(ge
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Nome de usuário em uso.")
 
+    client_username_validation.username_validation(credentials.new_username)
+
     current_client.update({"client_username": credentials.new_username})
     db.commit()
 
@@ -192,6 +194,8 @@ def password_reset(credentials: schemas.UpdateAccount, db: Session = Depends(get
     if hashing.verify(credentials.new_password, current.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Atualização de dados não autorizada.")
+
+    password_validation.password_validation(credentials.new_password)
 
     current_client.update({"password": hashing.hash(credentials.new_password)})
     db.commit()

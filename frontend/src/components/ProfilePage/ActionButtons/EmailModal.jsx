@@ -1,4 +1,4 @@
-export default function EmailModal({ formData, handleChange, onClose, handleEmail }) {
+export default function EmailModal({ formData, handleChange, onClose, handleEmail, error }) {
     return (
         <div className="overlay">
             <form className="email-modal" onSubmit={handleEmail}>
@@ -31,6 +31,12 @@ export default function EmailModal({ formData, handleChange, onClose, handleEmai
                         Cancelar
                     </button>
                 </div>
+
+                {error && (
+                    <div className="profile-error-message">
+                        {error}
+                    </div>
+                )}
             </form>
         </div>
     );

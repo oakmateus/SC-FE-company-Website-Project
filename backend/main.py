@@ -21,3 +21,11 @@ app.include_router(authenticated_homepage.router)
 @app.get("/")
 def homepage():
     return
+
+@app.get("/about")
+def about():
+    return
+
+@app.get("/terms")
+def terms():
+    return

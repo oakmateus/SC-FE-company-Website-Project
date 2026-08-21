@@ -1,4 +1,4 @@
-export default function DeleteModal({ formData, handleChange, onClose, handleDelete }) {
+export default function DeleteModal({ formData, handleChange, onClose, handleDelete, error }) {
     return (
         <div className="overlay">
             <form className="delete-modal" onSubmit={handleDelete}>
@@ -31,6 +31,12 @@ export default function DeleteModal({ formData, handleChange, onClose, handleDel
                         Cancelar
                     </button>
                 </div>
+
+                {error && (
+                    <div className="profile-error-message">
+                        {error}
+                    </div>
+                )}
             </form>
         </div>
     );

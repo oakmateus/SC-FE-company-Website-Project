@@ -7,12 +7,16 @@ import Scheduling from './pages/Scheduling';
 import RecoverConfirmation from './pages/RecoverConfirmation';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import About from './pages/About';
+import Terms from './pages/Terms';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />}/>
+        <Route path='/about' element={<About />}/>
+        <Route path='/terms' element={<Terms />}/>
         <Route path='/users/me' element={<Home />}/>
         <Route path='/users/me/profile' element={<Profile />}/>
         <Route path='/users/me/scheduling' element={<Scheduling />}/>

@@ -8,7 +8,7 @@
     padding: 1rem 2rem;
     box-sizing: border-box;
     position: relative;
-    z-index: 1000;
+    z-index: 999;
 
     background-color: var(--color-brown);
     box-shadow: 0 -5px 20px rgba(59, 31, 3, 0.583);

@@ -3,7 +3,7 @@
     padding: 1rem 2rem;
     box-sizing: border-box;
     position: relative;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .top-bar-content {
@@ -74,7 +74,7 @@
     box-shadow: 0 20px 50px rgba(59, 31, 3, 0.583);
 
     width: 200px;
-    height: 150px;
+    height: 130px;
 
     font-family: "Merriweather", serif;
     font-weight: 500;
@@ -95,13 +95,6 @@
     position: absolute;
     left: 32px;
     height: 20px;
-}
-
-.chat-bot {
-    color: var(--color-brown);
-
-    margin-top: 10px;
-    margin-left: -20px;
 }
 
 .whatsapp-chat {
@@ -153,7 +146,7 @@
     font-style: normal;
     font-size: 20px;
 
-    width: 280px;
+    width: 270px;
 }
 
 .profile-picture img {
@@ -209,7 +202,7 @@
 
     .about,
     .register,
-    .history-button {
+    .top-bar .history-button {
         display: none;
     }
 
@@ -242,7 +235,7 @@
         padding-inline: 25px;
         font-size: 12px;
         width: 150px;
-        height: 125px;
+        height: 100px;
         border: 2px solid var(--color-brown);
         margin-top: 5px;
     }
@@ -330,7 +323,7 @@
         font-size: 0px;
     }
 
-    .history-button {
+    .top-bar .history-button {
         display: none;
     }
 
@@ -347,7 +340,7 @@
         padding-inline: 25px;
         font-size: 8px;
         width: 85px;
-        height: 100px;
+        height: 80px;
         left: -13px;
         border: 2px solid var(--color-brown);
         margin-top: 5px;

@@ -3,16 +3,19 @@ export async function refreshSession(setError) {
         const refreshToken = localStorage.getItem("refresh_token");
 
         if (!refreshToken) {
-            setError('Algum erro ocorreu. Por favor, tente novamente.');
+            setError("Algum erro ocorreu. Por favor, tente novamente.");
             return false;
-        };
+        }
 
-        const response = await fetch("http://localhost:8000/login/refresh", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${refreshToken}`,
-            },
-        });
+        const response = await fetch(
+            "http://localhost:8000/login/refresh",
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${refreshToken}`,
+                },
+            }
+        );
 
         const result = await response.json();
 
@@ -22,15 +25,22 @@ export async function refreshSession(setError) {
             } else {
                 setError(result.detail);
             }
+
+            return false;
         }
 
-        sessionStorage.setItem("access_token", result.access_token);
+        sessionStorage.setItem(
+            "access_token",
+            result.access_token
+        );
 
         return true;
 
     } catch (err) {
+        console.error(err);
+
         setError("Algum erro ocorreu. Por favor, tente novamente.");
+
         return false;
     }
 }
-    

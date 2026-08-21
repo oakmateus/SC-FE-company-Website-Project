@@ -23,7 +23,7 @@ def create_access_token(data: dict):
 def create_refresh_token(data: dict):
    to_encode = data.copy()
 
-   expire = datetime.utcnow() + timedelta(minutes=settings.access_token_expire_days)
+   expire = datetime.utcnow() + timedelta(days=settings.refresh_token_expire_days)
    to_encode.update({"client_id": data["client_id"],
                     "exp": expire,
                     "jti": data["jti"], 
@@ -70,6 +70,10 @@ def verify_token(
          raise credentials_exception
 
       jti = payload.get("jti")
+
+
+      if expected_scope == "refresh" and jti is None:
+         raise credentials_exception
 
       client_id = payload.get("client_id")
 

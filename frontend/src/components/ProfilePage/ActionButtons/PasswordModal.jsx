@@ -1,4 +1,4 @@
-export default function PasswordModal({ formData, handleChange, onClose, handlePassword }) {
+export default function PasswordModal({ formData, handleChange, onClose, handlePassword, error }) {
     return (
         <div className="overlay">
             <form className="password-modal" onSubmit={handlePassword}>
@@ -40,6 +40,12 @@ export default function PasswordModal({ formData, handleChange, onClose, handleP
                         Cancelar
                     </button>
                 </div>
+
+                {error && (
+                    <div className="profile-error-message">
+                        {error}
+                    </div>
+                )}
             </form>
         </div>
     );

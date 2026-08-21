@@ -18,12 +18,15 @@ export default function ChangePhone() {
         });
     }
 
+    const [error, setError] = useState(null);
+
     const [isOpen, setIsOpen] = useState(false);
 
     const navigate = useNavigate();
 
     async function handlePhone(event) {
         event.preventDefault();
+        setError(null);
 
         let token = sessionStorage.getItem("access_token");
 
@@ -43,6 +46,18 @@ export default function ChangePhone() {
                 body: JSON.stringify(formData),
             }
         );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            if (Array.isArray(data.detail)) {
+                setError(data.detail[0].msg);
+            } else {
+                setError(data.detail);
+            }
+
+            return;
+        };
 
         if (response.status === 401) {
             const refreshToken = localStorage.getItem("refresh_token");
@@ -93,12 +108,13 @@ export default function ChangePhone() {
             return;
         }
 
-        const result = await response.json();
-
-        console.log(result);
-
+        if (Array.isArray(data.message)) {
+            setError(data.message[0].msg);
+        } else {
+            setError(data.message);
+        }
+        
         setIsOpen(false);
-
         navigate("/users/me");
 
     }
@@ -118,6 +134,7 @@ export default function ChangePhone() {
                     handleChange={handleChange}
                     formData={formData}
                     handlePhone={handlePhone}
+                    error={error}
                 />
             )}
         </div>

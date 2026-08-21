@@ -48,7 +48,7 @@ def login_client_account(credentials: schemas.ClientLoginCredentials, db: Sessio
                 token_id = jti,
                 client_id = current_account.client_id,
                 revoked = False,
-                expires_at = datetime.now(UTC) + timedelta(days=config.settings.access_token_expire_days)
+                expires_at = datetime.now(UTC) + timedelta(days=config.settings.refresh_token_expire_days)
             )
         )
 

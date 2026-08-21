@@ -1,5 +1,4 @@
 from fastapi import HTTPException, status
-from .. import schemas
 import re
 
 def username_size(username: str):

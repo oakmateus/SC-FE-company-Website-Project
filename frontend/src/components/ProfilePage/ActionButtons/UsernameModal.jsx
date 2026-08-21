@@ -1,4 +1,4 @@
-export default function UsernameModal({ formData, handleChange, onClose, handleUsername }) {
+export default function UsernameModal({ formData, handleChange, onClose, handleUsername, error }) {
     return (
         <div className="overlay">
             <form className="username-modal" onSubmit={handleUsername}>
@@ -21,6 +21,11 @@ export default function UsernameModal({ formData, handleChange, onClose, handleU
                         Cancelar
                     </button>
                 </div>
+                {error && (
+                    <div className="profile-error-message">
+                        {error}
+                    </div>
+                )}
             </form>
         </div>
     );

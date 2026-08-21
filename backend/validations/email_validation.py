@@ -1,6 +1,5 @@
 from fastapi import HTTPException, status
 from pydantic import TypeAdapter, EmailStr
-from .. import schemas
 
 def email_format(useremail):
     email_adapter = TypeAdapter(EmailStr)

@@ -33,14 +33,6 @@ export default function TopBar({ user }) {
                                     <span>Instagram</span>
                                 </a>
 
-                                <a className="chat-bot" href="">
-                                    <div className="whatsapp-icon">
-                                        <img src={WhatsappIcon} alt="bot" />
-                                    </div>
-
-                                    <span>ChatBot</span>
-                                </a>
-
                                 <a className="whatsapp-chat" href="https://wa.me/5521992983104">
                                     <div className="whatsapp-icon">
                                         <img src={WhatsappIcon} alt="wpp" />
