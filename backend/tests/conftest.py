@@ -10,6 +10,9 @@ from ..database import Base, get_db
 from ..config import settings
 from ..main import app
 
+from jose import jwt
+from datetime import datetime, UTC, timedelta
+
 SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}_test"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
@@ -44,11 +47,14 @@ def test_client(client):
                  "phone_number": "+5521970871876",
                  "email": "test1@email.com",
                  "password": "A123456#"}
-    response = client.post("/conta/registro", json=user_data)
+    response = client.post("/register", json=user_data)
 
     assert response.status_code == 201
     new_user = response.json()
+
+    new_user["client_username"] = user_data["client_username"]
     new_user['password'] = user_data['password']
+
     return new_user
 
 @pytest.fixture
@@ -64,3 +70,52 @@ def authorized_client(client, token):
     }
     
     return client
+
+@pytest.fixture
+def refresh_token(test_client, client):
+    response = client.post(
+        "/login",
+        json={
+            "email": test_client["email"],
+            "password": test_client["password"],
+            "remember_me": True
+        }
+    )
+
+    assert response.status_code == 200
+
+    return response.json()["refresh_token"]
+
+@pytest.fixture
+def revoked_refresh_token(refresh_token, session):
+    payload = jwt.decode(
+        refresh_token,
+        settings.secret_key,
+        algorithms=[settings.algorithm]
+    )
+
+    token = session.query(models.RefreshToken).filter(
+        models.RefreshToken.token_id == payload["jti"]
+    ).first()
+
+    token.revoked = True
+    session.commit()
+
+    return refresh_token
+
+@pytest.fixture
+def expired_refresh_token(refresh_token, session):
+    payload = jwt.decode(
+        refresh_token,
+        settings.secret_key,
+        algorithms=[settings.algorithm]
+    )
+
+    token = session.query(models.RefreshToken).filter(
+        models.RefreshToken.token_id == payload["jti"]
+    ).first()
+
+    token.expires_at = datetime.now(UTC) - timedelta(minutes=1)
+    session.commit()
+
+    return refresh_token
