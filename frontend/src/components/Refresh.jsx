@@ -8,7 +8,7 @@ export async function refreshSession(setError) {
         }
 
         const response = await fetch(
-            "http://localhost:8000/login/refresh",
+            "/api/login/refresh",
             {
                 method: "POST",
                 headers: {

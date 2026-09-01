@@ -25,7 +25,7 @@ export default function History() {
         }
 
         let response = await fetch(
-            "http://localhost:8000/users/me/history",
+            "/api/users/me/history",
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ export default function History() {
             }
 
             const refreshResponse = await fetch(
-                "http://localhost:8000/login/refresh",
+                "/api/login/refresh",
                 {
                     method: "POST",
                     headers: {
@@ -69,7 +69,7 @@ export default function History() {
             );
 
             response = await fetch(
-                "http://localhost:8000/users/me/history",
+                "/api/users/me/history",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

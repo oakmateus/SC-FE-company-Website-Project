@@ -35,7 +35,7 @@ export default function Delete() {
         }
 
         let response = await fetch(
-            "http://localhost:8000/users/me/delete",
+            "/api/users/me/delete",
             {
                 method: "POST",
                 headers: {
@@ -67,7 +67,7 @@ export default function Delete() {
             }
 
             const refreshResponse = await fetch(
-                "http://localhost:8000/login/refresh",
+                "/api/login/refresh",
                 {
                     method: "POST",
                     headers: {
@@ -91,7 +91,7 @@ export default function Delete() {
             sessionStorage.setItem("access_token", token);
 
             response = await fetch(
-                "http://localhost:8000/users/me/delete",
+                "/api/users/me/delete",
                 {
                     method: "POST",
                     headers: {

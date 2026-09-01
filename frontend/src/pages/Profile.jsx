@@ -21,7 +21,7 @@ export default function Profile() {
             }
 
             let response = await fetch(
-                "http://localhost:8000/users/me/profile",
+                "/api/users/me/profile",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ export default function Profile() {
                 }
 
                 const refreshResponse = await fetch(
-                    "http://localhost:8000/login/refresh",
+                    "/api/login/refresh",
                     {
                         method: "POST",
                         headers: {
@@ -65,7 +65,7 @@ export default function Profile() {
                 );
 
                 response = await fetch(
-                    "http://localhost:8000/users/me/profile",
+                    "/api/users/me/profile",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

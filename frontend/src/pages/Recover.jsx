@@ -25,7 +25,7 @@ function Recover() {
         setError(null)
 
         try {
-            const response = await fetch('http://localhost:8000/login/recover', {
+            const response = await fetch('/api/login/recover', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

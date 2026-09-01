@@ -37,7 +37,7 @@ export default function ChangePassword() {
         }
 
         let response = await fetch(
-            "http://localhost:8000/users/me/password",
+            "/api/users/me/password",
             {
                 method: "POST",
                 headers: {
@@ -69,7 +69,7 @@ export default function ChangePassword() {
             }
 
             const refreshResponse = await fetch(
-                "http://localhost:8000/login/refresh",
+                "/api/login/refresh",
                 {
                     method: "POST",
                     headers: {
@@ -93,7 +93,7 @@ export default function ChangePassword() {
             sessionStorage.setItem("access_token", token);
 
             response = await fetch(
-                "http://localhost:8000/users/me/password",
+                "/api/users/me/password",
                 {
                     method: "POST",
                     headers: {

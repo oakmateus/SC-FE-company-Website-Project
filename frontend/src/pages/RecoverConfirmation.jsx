@@ -28,7 +28,7 @@ function RecoverConfirmation() {
         const recoveryToken = sessionStorage.getItem("recovery_token");
 
         try {
-            const response = await fetch("http://localhost:8000/login/recover/confirmation",
+            const response = await fetch("/api/login/recover/confirmation",
                 {
                     method: "POST",
                     headers: {

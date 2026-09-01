@@ -36,7 +36,7 @@ export default function ChangeUsername() {
         }
 
         let response = await fetch(
-            "http://localhost:8000/users/me/username",
+            "/api/users/me/username",
             {
                 method: "POST",
                 headers: {
@@ -68,7 +68,7 @@ export default function ChangeUsername() {
             }
 
             const refreshResponse = await fetch(
-                "http://localhost:8000/login/refresh",
+                "/api/login/refresh",
                 {
                     method: "POST",
                     headers: {
@@ -92,7 +92,7 @@ export default function ChangeUsername() {
             sessionStorage.setItem("access_token", token);
 
             response = await fetch(
-                "http://localhost:8000/users/me/username",
+                "/api/users/me/username",
                 {
                     method: "POST",
                     headers: {

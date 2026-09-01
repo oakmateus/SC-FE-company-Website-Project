@@ -8,7 +8,7 @@ export default function Logout() {
         const refreshToken = localStorage.getItem("refresh_token");
 
         try {
-            await fetch("http://localhost:8000/users/me/logout", {
+            await fetch("/api/users/me/logout", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${refreshToken}`,

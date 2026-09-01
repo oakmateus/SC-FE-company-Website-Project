@@ -20,7 +20,7 @@ export default function Home() {
                     return;
                 }
                 
-                let response = await fetch("http://localhost:8000/users/me", {
+                let response = await fetch("/api/users/me", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -36,7 +36,7 @@ export default function Home() {
                     }
 
                     const refreshResponse = await fetch(
-                        "http://localhost:8000/login/refresh",
+                        "/api/login/refresh",
                         {
                             method: "POST",
                             headers: {
@@ -62,7 +62,7 @@ export default function Home() {
                         refreshData.access_token
                     );
 
-                    response = await fetch("http://localhost:8000/users/me", {
+                    response = await fetch("/api/users/me", {
                         method: "GET",
                         headers: {
                             Authorization: `Bearer ${refreshData.access_token}`
