@@ -11,7 +11,7 @@ router = APIRouter(
     tags=["Client Account Register"]
     )
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.ClientRegisterOut)
+@router.post("", status_code=status.HTTP_201_CREATED, response_model=schemas.ClientRegisterOut)
 def create_client_account(credentials: schemas.ClientRegisterCredentials, db: Session = Depends(get_db)):
 
     client_username_validation.username_validation(credentials.client_username)

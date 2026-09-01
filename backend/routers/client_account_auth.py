@@ -19,7 +19,7 @@ router = APIRouter(
     tags=["Client Account Login"]
 )
 
-@router.post("/")
+@router.post("")
 def login_client_account(credentials: schemas.ClientLoginCredentials, db: Session = Depends(get_db)):
 
     current_account = db.query(models.Client).filter(models.Client.email == credentials.email).first()

@@ -15,7 +15,7 @@ router = APIRouter(
     tags=["Authenticated Homepage Dashboard"]
 )
 
-@router.get("/")
+@router.get("")
 def auth_homepage(client = Depends(oauth2.get_current_client)):
     return client
 
