@@ -15,9 +15,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-    ports:
-      - "5432:5432"
-
 
   backend:
     build:
@@ -25,9 +22,6 @@ services:
       dockerfile: backend/Dockerfile
 
     container_name: sc_backend
-
-    ports:
-      - "8000:8000"
 
     env_file:
       - .env
@@ -50,8 +44,25 @@ services:
     depends_on:
       - backend
 
+
+  nginx:
+    image: nginx:alpine
+
+    container_name: sc_nginx
+
+    restart: unless-stopped
+
     ports:
-      - "5173:80"
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro  
+
+    depends_on:
+      - frontend
+      - backend
 
 
 volumes:
