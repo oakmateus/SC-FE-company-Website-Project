@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: scdatabase_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d scdatabase_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_NAME: scdatabase
+      DATABASE_PORT: 5432
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PASSWORD: postgres
+      DATABASE_USERNAME: postgres
+
+      SECRET_KEY: test-secret-key
+      ACCESS_TOKEN_EXPIRE_MINUTES: 60
+      REFRESH_TOKEN_EXPIRE_DAYS: 7
+      ALGORITHM: HS256
+
+      RECOVERY_SECRET_KEY: test-recovery-secret-key
+      RECOVERY_TOKEN_EXPIRE_MINUTES: 10
+
+      RESEND_API_KEY: test-resend-api-key
+      DEVELOPMENT_EMAIL: test@example.com
+      DOMAIN_EMAIL: example.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements.txt
+            backend/requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install -r backend/requirements-dev.txt
+
+      - name: Run tests
+        run: |
+          pytest backend/tests -v
