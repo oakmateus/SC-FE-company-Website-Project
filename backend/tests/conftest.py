@@ -1,19 +1,22 @@
-from fastapi.testclient import TestClient
+from datetime import date, datetime, UTC, timedelta
+from unittest.mock import patch
+
 import pytest
+
+from fastapi.testclient import TestClient
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from .. import models
-from ..oauth2 import create_access_token
-from ..database import Base, get_db
-from ..config import settings
-from ..main import app
-
 from jose import jwt
-from datetime import datetime, UTC, timedelta
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}_test"
+from .. import models
+from ..config import settings
+from ..database import Base, get_db
+from ..main import app
+from ..oauth2 import create_access_token
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@localhost:{settings.database_port}/{settings.database_name}_test"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
@@ -119,3 +122,28 @@ def expired_refresh_token(refresh_token, session):
     session.commit()
 
     return refresh_token
+
+@pytest.fixture
+def valid_scheduling_data():
+    return {
+        "event_types": "Casamento",
+        "custom_event": None,
+        "service_types": ["Buffet"],
+        "custom_service": None,
+        "optional_kitchens": ["Brasileira"],
+        "estimated_date": (
+            date.today() + timedelta(days=30)
+        ).isoformat(),
+        "event_address": "Rua Teste, 123",
+        "estimated_gests_quantity": 100,
+        "estimated_budget": "5000.00",
+        "optional_observatios": None,
+    }
+
+
+@pytest.fixture
+def mock_resend():
+    with patch(
+        "backend.routers.authenticated_homepage.resend.Emails.send"
+    ) as mock_send:
+        yield mock_send

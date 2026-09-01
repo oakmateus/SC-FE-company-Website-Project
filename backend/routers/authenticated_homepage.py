@@ -57,12 +57,18 @@ def scheduling(scheduling: schemas.Scheduling, db: Session = Depends(get_db), cl
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Agendamento não existente.")
 
+    current = db.query(models.Client).filter(models.Client.client_id == client.client_id).first()
+
+    if not current:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail="Agendamento não existente.")
+
     try:
         pdf = scheduling_pdf.scheduling_pdf(scheduling_infos)
 
         resend.Emails.send({
-            "from": "Acme <onboarding@resend.dev>",
-            "to": [config.settings.development_email],
+            "from": f"Silva Carvalho Festas & Eventos <noreply@{config.settings.domain_email}>",
+            "to": [current.email],
             "subject": "Agendamento de Evento",
             "html": f"<p>Agendamento de evento recebido.",
             "attachments": [

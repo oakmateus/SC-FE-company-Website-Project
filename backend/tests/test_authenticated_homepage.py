@@ -19,6 +19,74 @@ def test_auth_homepage_unauthorized(client):
 
     assert response.status_code == 401
 
+# Testing scheduling and Resend service
+
+@pytest.mark.parametrize(
+    "field,max_length",
+    [
+        ("custom_event", 150),
+        ("custom_service", 300),
+        ("event_address", 300),
+        ("optional_observatios", 1000),
+    ],
+)
+def test_scheduling_string_at_limit(
+    authorized_client,
+    valid_scheduling_data,
+    field,
+    max_length,
+    mock_resend,
+):
+    data = valid_scheduling_data.copy()
+
+    if field == "custom_event":
+        data.pop("event_types", None)
+
+    elif field == "custom_service":
+        data.pop("service_types", None)
+
+    data[field] = "A" * max_length
+
+    response = authorized_client.post(
+        "/users/me/scheduling",
+        json=data,
+    )
+
+    assert response.status_code == 200
+
+@pytest.mark.parametrize(
+    "field,max_length",
+    [
+        ("custom_event", 150),
+        ("custom_service", 300),
+        ("event_address", 300),
+        ("optional_observatios", 1000),
+    ],
+)
+
+def test_scheduling_string_above_limit(
+    authorized_client,
+    valid_scheduling_data,
+    field,
+    max_length,
+    mock_resend,
+):
+    data = valid_scheduling_data.copy()
+
+    if field == "custom_event":
+        data["event_types"] = None
+
+    elif field == "custom_service":
+        data["service_types"] = None
+
+    data[field] = "A" * (max_length + 1)
+
+    response = authorized_client.post(
+        "/users/me/scheduling",
+        json=data,
+    )
+
+    assert response.status_code == 422
 
 # Testing access profile page
 

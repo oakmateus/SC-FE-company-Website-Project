@@ -1,11 +1,12 @@
 from fastapi import HTTPException, status
 from datetime import date
 
-def string_validations(text: str, max_lenght: int):
-    if len(text) > max_lenght:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-                            detail="Tamanho de texto excedido.")
-    return
+def string_validations(text: str | None, max_lenght: int):
+    if text is not None and len(text) > max_lenght:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            detail="Tamanho de texto excedido."
+        )
 
 def fieds_colision_treatment(scheduling):
 

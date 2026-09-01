@@ -119,7 +119,7 @@ def forgot_password(credentials: schemas.ConfirmationStep, db: Session = Depends
 
     try:
         resend.Emails.send({
-        "from": "Acme <onboarding@resend.dev>",
+        "from": f"Silva Carvalho Festas & Eventos <noreply@{config.settings.domain_email}>",
         "to": [current_account.email],
         "subject": "Recuperação de senha",
         "html": f"Seu código é <strong>{code}</strong>"
