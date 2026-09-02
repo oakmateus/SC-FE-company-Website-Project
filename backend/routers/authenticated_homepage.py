@@ -64,7 +64,7 @@ def scheduling(scheduling: schemas.Scheduling, db: Session = Depends(get_db), cl
             "from": f"Silva Carvalho Festas & Eventos <noreply@{config.settings.domain_email}>",
             "to": [config.settings.development_email],
             "subject": "Agendamento de Evento",
-            "html": f"<p>Agendamento de evento recebido.",
+            "html": f"<p>Agendamento de evento recebido.</p>",
             "attachments": [
                 {
                     "filename": "agendamento.pdf",
