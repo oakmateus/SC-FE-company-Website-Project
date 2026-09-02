@@ -118,7 +118,7 @@ export default function Shceduling() {
 
                 estimated_budget: Number(formData.estimated_budget),
 
-                estimated_date: Number(formData.estimated_date)
+                estimated_date: formData.estimated_date,
             };
 
             const response = await fetch(
@@ -129,7 +129,7 @@ export default function Shceduling() {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(data)
                 }
             );
 
