@@ -1,8 +1,10 @@
 # Silva Carvalho Festas & Eventos
 
-Aplicação web desenvolvida para uma empresa, envolvendo frontend, backend e infraestrutura.
+Web application developed for a real business, covering frontend, backend and infrastructure.
 
-## Tecnologias
+**[🌐 Live Demo](https://silvacarvalhofestas.com)**
+
+## Technologies
 
 ### Backend
 - Python
@@ -19,40 +21,19 @@ Aplicação web desenvolvida para uma empresa, envolvendo frontend, backend e in
 - HTML
 - CSS
 
-### Infraestrutura
+### Infrastructure
 - Docker
 - Linux
 - Nginx
 - Gunicorn
 - Uvicorn
 
-### Serviços
-- Resend
+## Features
 
-## Funcionalidades
-
-- Autenticação de usuários
-- Controle de acesso
-- Recuperação de senha por e-mail
-- Gerenciamento de dados
-- Interface web responsiva
-- API REST
-- Integração com banco de dados PostgreSQL
-
-## Arquitetura
-
-O projeto é dividido entre frontend e backend, com comunicação através de uma API REST.
-
-- **Frontend:** React + Vite
-- **Backend:** FastAPI
-- **Database:** PostgreSQL
-- **Reverse Proxy:** Nginx
-- **Application Server:** Gunicorn + Uvicorn
-- **Containerização:** Docker
-
-## Execução local
-
-### Backend
-
-```bash
-cd backend
+- User authentication
+- Access control
+- Password recovery via email
+- Data management
+- Responsive web interface
+- REST API
+- PostgreSQL database integration
